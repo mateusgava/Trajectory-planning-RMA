@@ -1,0 +1,1 @@
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/envrobotz/share/envrobotz/cmake/envrobotzConfig.cmake

@@ -1,0 +1,1 @@
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/mobile_rob_dev_sim/lib/pkgconfig/mobile_rob_dev_sim.pc

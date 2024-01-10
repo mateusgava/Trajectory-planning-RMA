@@ -1,0 +1,1 @@
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/catkin_simple/share/catkin_simple/cmake/catkin_simple-extras.cmake

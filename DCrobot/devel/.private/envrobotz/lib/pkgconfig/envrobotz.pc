@@ -1,0 +1,8 @@
+prefix=/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/envrobotz
+
+Name: envrobotz
+Description: Description of envrobotz
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

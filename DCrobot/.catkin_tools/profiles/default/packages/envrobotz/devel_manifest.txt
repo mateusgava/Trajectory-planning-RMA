@@ -1,0 +1,5 @@
+envrobotz
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/envrobotz/cmake.lock /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./cmake.lock
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/envrobotz/share/envrobotz/cmake/envrobotzConfig-version.cmake /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/share/envrobotz/cmake/envrobotzConfig-version.cmake
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/envrobotz/share/envrobotz/cmake/envrobotzConfig.cmake /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/share/envrobotz/cmake/envrobotzConfig.cmake
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/envrobotz/lib/pkgconfig/envrobotz.pc /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/lib/pkgconfig/envrobotz.pc
