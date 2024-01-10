@@ -1,5 +1,7 @@
 import rospy
 import networkx as nx
+from sensor_msgs.msg import LaserScan
+import time
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Pose, PoseStamped, Point, Twist, PoseWithCovarianceStamped, PointStamped
 from tf.transformations import euler_from_quaternion
@@ -26,8 +28,15 @@ class RobotController:
         self.cmd_vel_pub = rospy.Publisher('/robot/cmd_vel', Twist, queue_size=10)
         self.graph = nx.Graph()
         self.current_pose = None
-        
+
     def callback(self, msg): 
+        # point = PointStamped()
+        # point.header.stamp = rospy.Time.now()
+        # point.header.frame_id = "/map"
+        # point.point.x = x 
+        # point.point.y = y 
+        # point.point.z = z
+        # rospy.loginfo("coordinates:x=%f y=%f" %(x,y))
         x = msg.point.x    
         y = msg.point.y
         z = msg.point.z
@@ -42,7 +51,7 @@ class RobotController:
         
         self.current_pose = odom_msg.pose.pose
         self.update_graph()
-        print("self current pose", self.current_pose)
+        #print("self current pose", self.current_pose)
         #print("chamei o ODOM")
 
     def amcl_callback(self, amclpose):
@@ -97,7 +106,7 @@ class RobotController:
         while frontier:
             current_cost, current_node = heappop(frontier)
 
-            if current_node == goal_node:
+            if current_node >= goal_node:
                 break
 
             for next_node in get_neighbors(current_node):
@@ -125,12 +134,110 @@ class RobotController:
         print('chamei o FOLLOW PATH')
         current_p = self.get_current_pose()
         print("current_p", current_p.position)
+
+        rospy.Subscriber("/scan", LaserScan, self.start_reactive)
+
         for pose in path:
             print("Pose", pose)
             cmd_vel_msg = self.convert_pose_to_cmd_vel(target_pose = pose)
             self.cmd_vel_pub.publish(cmd_vel_msg)
             print("enviei o comando para o CMD_VEL")
             rospy.sleep(1)  
+            
+    def start_reactive(self, msg):
+        
+        # Stop robot
+        def stop():
+            pub = rospy.Publisher('/robot/cmd_vel', Twist, queue_size=10)
+            t = Twist()
+            t.linear.x = 0
+            t.linear.y = 0
+            t.linear.z = 0
+            t.angular.x = 0
+            t.angular.y = 0
+            t.angular.z = 0
+            pub.publish(t)
+        # turn robot
+        def turn():
+            pub = rospy.Publisher('/robot/cmd_vel', Twist, queue_size=10)
+            t = Twist()
+            t.linear.x = 0
+            t.linear.y = 0
+            t.linear.z = 0
+            t.angular.x = 0
+            t.angular.y = 0
+            t.angular.z = 0.1
+            pub.publish(t)
+
+        # turn robot counterclockwise
+        def turncc():
+            pub = rospy.Publisher('/robot/cmd_vel', Twist, queue_size=10)
+            t = Twist()
+            t.linear.x = 0
+            t.linear.y = 0
+            t.linear.z = 0
+            t.angular.x = 0
+            t.angular.y = 0
+            t.angular.z = -0.1
+            pub.publish(t)
+
+        laser_raw = msg.ranges
+        laser_float = [float(r) for r in laser_raw]
+        esquerda = 0
+        direita = 0
+        frente = 0
+        
+        
+        for i in range(len(laser_float)):
+
+            if i >= 0 and i < 279:
+                direita = direita + laser_float[i]
+            elif i == 279:
+                direita = direita + laser_float[i]
+                direita = direita/280
+                #print("Direita" , direita)
+
+            if i >= 280 and i < 437:
+                frente = frente + laser_float[i]
+            elif i == 438:
+                frente = frente + laser_float[i]
+                frente = frente/280
+                #print("Frente" , frente)
+
+            if i >= 439  and i < 719:
+                esquerda = esquerda + laser_float[i]
+            elif i == 719:
+                esquerda = esquerda + laser_float[i]
+                esquerda = esquerda/280
+                #print("Esquerda" , esquerda)
+        
+        if esquerda < 0.5 :     
+            turncc()
+            time.sleep(0.1)
+            stop()
+             
+        elif direita < 0.5:
+            turn()
+            time.sleep(0.1)
+            stop()
+            
+
+        if frente <= 1 and direita >= 50:
+            turncc()
+            time.sleep(0.1)
+            stop()
+            
+            
+        elif frente <= 1 and esquerda >=50:
+            turn()
+            time.sleep(0.1)
+            stop()
+            
+                
+   
+        esquerda = 0
+        direita = 0
+        frente = 0
 
     def convert_pose_to_cmd_vel(self, target_pose, linear_speed=0.2, angular_speed=0.2):
         current_pose = self.get_current_pose()
