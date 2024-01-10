@@ -1,0 +1,1 @@
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/follow_waypoints/lib/pkgconfig/follow_waypoints.pc

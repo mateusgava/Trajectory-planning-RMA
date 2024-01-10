@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/follow_waypoints/setup.sh

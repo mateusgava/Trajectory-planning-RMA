@@ -1,0 +1,12 @@
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./local_setup.bash
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./env.sh
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./local_setup.sh
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./_setup_util.py
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./setup.sh
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./setup.bash
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./cmake.lock
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./setup.zsh
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./local_setup.zsh
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
+Symlinking /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/lib/pkgconfig/catkin_tools_prebuild.pc

@@ -1,0 +1,1 @@
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/smb_control/lib/pkgconfig/smb_control.pc

@@ -1,0 +1,1 @@
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/follow_waypoints/share/follow_waypoints/cmake/follow_waypointsConfig.cmake

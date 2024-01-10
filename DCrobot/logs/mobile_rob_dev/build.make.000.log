@@ -1,0 +1,6 @@
+[35m[1mScanning dependencies of target mobile_rob_dev_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/mobile_rob_dev_node.dir/src/mobile_rob_dev/robot.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/mobile_rob_dev_node.dir/src/mobile_rob_dev/robotMain.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/mobile_rob_dev_node.dir/src/mobile_rob_dev/robotSystem.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/mobile_rob_dev/lib/mobile_rob_dev/mobile_rob_dev_node[0m
+[100%] Built target mobile_rob_dev_node

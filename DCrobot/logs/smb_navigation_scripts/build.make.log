@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target filter_pcl_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/filter_pcl_node.dir/src/filter_pcl_node.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/smb_navigation_scripts/lib/smb_navigation_scripts/filter_pcl_node[0m
+[100%] Built target filter_pcl_node
