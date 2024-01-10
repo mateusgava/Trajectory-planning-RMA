@@ -1,0 +1,1 @@
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/catkin_simple/lib/pkgconfig/catkin_simple.pc

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- 
+gazebo.launch
+
+Created by: Kelen Teixeira Vivaldini on Nov 30, 2023
+Last Modified: mateusgava
+
+Description: This is the gazebo launch for the mobile_rob_dev_sim V6 robot in a simulation environment.
+ -->
+<launch>
+  <!-- Launch move_base -->
+  <include file="/home/mateus/Github/Trajectory-planning-RMA/DCrobot/src/mobile_rob_dev_sim/launch/gazebo_init.launch" />
+
+  <!-- Launch AMCL for localization -->
+  <include file="/home/mateus/Github/Trajectory-planning-RMA/DCrobot/src/mobile_rob_dev_sim/launch/gazebo_monte-carlo.launch" />
+
+  <!-- Launch RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d /home/mateus/Github/Trajectory-planning-RMA/DCrobot/src/mobile_rob_dev_sim/rviz_data/navigation.rviz" />
+</launch>

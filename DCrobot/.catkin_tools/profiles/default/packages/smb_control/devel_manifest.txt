@@ -1,0 +1,5 @@
+smb_control
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/smb_control/cmake.lock /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/./cmake.lock
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/smb_control/share/smb_control/cmake/smb_controlConfig.cmake /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/share/smb_control/cmake/smb_controlConfig.cmake
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/smb_control/share/smb_control/cmake/smb_controlConfig-version.cmake /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/share/smb_control/cmake/smb_controlConfig-version.cmake
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/smb_control/lib/pkgconfig/smb_control.pc /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/lib/pkgconfig/smb_control.pc

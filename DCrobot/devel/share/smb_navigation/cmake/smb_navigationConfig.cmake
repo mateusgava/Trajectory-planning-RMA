@@ -1,0 +1,1 @@
+/home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel/.private/smb_navigation/share/smb_navigation/cmake/smb_navigationConfig.cmake

@@ -1,0 +1,6 @@
+devel_space: /home/mateus/Github/Trajectory-planning-RMA/DCrobot/devel
+install: false
+install_space: /home/mateus/Github/Trajectory-planning-RMA/DCrobot/install
+profile: default
+source_space: /home/mateus/Github/Trajectory-planning-RMA/DCrobot/src
+workspace: /home/mateus/Github/Trajectory-planning-RMA/DCrobot

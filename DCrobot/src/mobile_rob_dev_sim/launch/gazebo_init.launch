@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!-- 
+gazebo.launch
+
+Created by: Kelen Teixeira Vivaldini on Nov 30, 2023
+Last Modified: mateusgava
+
+Description: This is the gazebo launch for the mobile_rob_dev_sim V6 robot in a simulation environment.
+ -->
+<launch>
+  <arg name="x" default="-24.0"/>
+  <arg name="y" default="-12.0"/>
+  <arg name="x_" default="24.0"/>
+  <arg name="y_" default="12.0"/>
+  <arg name="z" default="0.0"/>
+  <arg name="roll" default="0.0"/>
+  <arg name="pitch" default="0.0"/>
+  <arg name="yaw" default="0.0"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find mobile_rob_dev_sim)/urdf/mobile_rob_dev_sim.urdf use_nominal_extrinsics:=true add_plug:=true"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- DC Robot starts in MakerSpace room - 1st floor-->
+    <!-- <arg name="world_name" value="$(find envrobotz)/worlds/EnvDC_MakerSpace.world"/> -->
+
+    <!-- DC Robot starts in front LARIS room - 2nd floor -->
+    <!-- <arg name="world_name" value="$(find envrobotz)/worlds/EnvDC_2ndfloor.world"/> -->
+
+    <arg name="world_name" value="$(find envrobotz)/worlds/EnvDC_2ndfloor.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+
+
+  <!--<node pkg="tf" type="static_transform_publisher" name="baselink_odom" args="0 0 0 0 0 0 base_link odom 1000" />
+  
+  <node pkg="tf" type="static_transform_publisher" name="baselink_right_wheel" args="0 0 0 0 0 0 base_link right_wheel 1000" />
+  <node pkg="tf" type="static_transform_publisher" name="baselink_left_wheel" args="0 0 0 0 0 0 base_link left_wheel 1000" />
+  <node pkg="tf" type="static_transform_publisher" name="baselink_base_rplidar" args="0 0 0 0 0 0 base_link base_rplidar 1000" />
+  <node pkg="tf" type="static_transform_publisher" name="baserplidar_scan" args="0 0 0 0 0 0 base_rplidar scan 1000" />-->
+
+<!--
+  <node pkg="tf" type="static_transform_publisher" name="map_to_base_link" args="$(arg x) $(arg y) $(arg z) 0 0 0 map base_link 1" />
+  <node pkg="tf" type="static_transform_publisher" name="baserplidar_odom" args="0 0 0 0 0 base_rplidar odom 1000" />
+  <node pkg="tf" type="static_transform_publisher" name="baserplidar_map" args="$(arg x_) $(arg y_) $(arg z) 0 0 0 base_rplidar map 1000" /> 
+
+-->
+  
+  	
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find mobile_rob_dev_sim)/urdf/mobile_rob_dev_sim.urdf -urdf -model mobile_rob_dev_sim -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)" output="screen"/>
+  <node name="fake_joint_calibration" pkg="rostopic" type="rostopic" args="pub /calibrated std_msgs/Bool true"/>
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node pkg="move_base" type="move_base" name="move_base" output="screen">
+    <param name="base_global_planner" value="navfn/NavfnROS"/>
+    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
+    <rosparam file="$(find mobile_rob_dev)/config/teb/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find mobile_rob_dev)/config/teb/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find mobile_rob_dev)/config/teb/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find mobile_rob_dev)/config/teb/local_costmap_params.yaml" command="load" />
+    <param name="cmd_vel_topic" value="/robot/cmd_vel"/>
+    <param name="goal_topic" value="/move_base/goal"/>
+  </node>
+</launch>
